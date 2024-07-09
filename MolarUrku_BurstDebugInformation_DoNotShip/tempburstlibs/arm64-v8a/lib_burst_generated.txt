@@ -9,6 +9,7 @@ Library: C:\Users\leona\GitKraken\MolarUrku\Temp\BurstOutput\tempburstlibs\arm64
 --target-framework=NetFramework
 --assembly-defines=Assembly-CSharp;
 --assembly-defines=CardboardSamples;
+--assembly-defines=Cinemachine;
 --assembly-defines=Google.XR.Cardboard;
 --assembly-defines=Mono.Security;
 --assembly-defines=mscorlib;
@@ -25,6 +26,7 @@ Library: C:\Users\leona\GitKraken\MolarUrku\Temp\BurstOutput\tempburstlibs\arm64
 --assembly-defines=Unity.RenderPipelines.Core.Runtime;
 --assembly-defines=Unity.RenderPipelines.Universal.Runtime;
 --assembly-defines=Unity.TextMeshPro;
+--assembly-defines=Unity.Timeline;
 --assembly-defines=Unity.XR.Management;
 --assembly-defines=UnityEngine;
 --generate-link-xml=Temp\burst.link.xml
@@ -53,6 +55,7 @@ Library: C:\Users\leona\GitKraken\MolarUrku\Temp\BurstOutput\tempburstlibs\arm64
 --float-mode=Fast
 --assembly-defines=Assembly-CSharp;
 --assembly-defines=CardboardSamples;
+--assembly-defines=Cinemachine;
 --assembly-defines=Google.XR.Cardboard;
 --assembly-defines=Mono.Security;
 --assembly-defines=mscorlib;
@@ -69,6 +72,7 @@ Library: C:\Users\leona\GitKraken\MolarUrku\Temp\BurstOutput\tempburstlibs\arm64
 --assembly-defines=Unity.RenderPipelines.Core.Runtime;
 --assembly-defines=Unity.RenderPipelines.Universal.Runtime;
 --assembly-defines=Unity.TextMeshPro;
+--assembly-defines=Unity.Timeline;
 --assembly-defines=Unity.XR.Management;
 --assembly-defines=UnityEngine;
 --generate-link-xml=Temp\burst.link.xml

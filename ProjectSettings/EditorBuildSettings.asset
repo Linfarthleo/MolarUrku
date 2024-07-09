@@ -8,6 +8,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: cf41571e327b23944a0fdeef7281ed89
+  - enabled: 1
+    path: Assets/Scenes/WorldOneScene.unity
+    guid: 8b7fda23337fc7f468aeb75a3df6f511
+  - enabled: 1
+    path: Assets/Scenes/AlimentacionSana.unity
+    guid: 7bea56aa29ca6124184f3610f099acd4
+  - enabled: 1
+    path: Assets/Scenes/CepilladoHabito.unity
+    guid: 5b64edc0c8c56f04c9f8187e3a0cf6e9
+  - enabled: 1
+    path: Assets/Scenes/VisitasDentista.unity
+    guid: 09b1f622e390ba249b13c1309761c0c0
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 41102b770303eeb4dbe5b6a99b9d4ea8,
       type: 2}

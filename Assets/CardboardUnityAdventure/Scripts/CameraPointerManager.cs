@@ -11,7 +11,7 @@ public class CameraPointerManager : MonoBehaviour
     [Range(0, 1)]
     [SerializeField] private float disPointerObject = 0.95f;
 
-    private const float _maxDistance = 10;
+    private const float _maxDistance = 100;
     private GameObject _gazedAtObject = null;
     private bool _isPointerOverInteractable = false;
 
@@ -87,33 +87,37 @@ public class CameraPointerManager : MonoBehaviour
     }
 
     private void UpdatePointerState(GameObject newGazedObject)
+{
+    if (_gazedAtObject != null && _gazedAtObject.activeInHierarchy)
     {
-        if (_gazedAtObject != null)
-        {
-            _gazedAtObject.SendMessage("OnPointerExitXR");
-            _isPointerOverInteractable = false;
-        }
-
-        _gazedAtObject = newGazedObject;
-
-        if (_gazedAtObject != null)
-        {
-            _gazedAtObject.SendMessage("OnPointerEnterXR");
-            _isPointerOverInteractable = true;
-            GazeManager.Instance.StartGazeSelection();
-        }
-        else
-        {
-            GazeManager.Instance.CancelGazeSelection();
-        }
+        _gazedAtObject.SendMessage("OnPointerExitXR");
+        _isPointerOverInteractable = false;
     }
+
+    _gazedAtObject = newGazedObject;
+
+    if (_gazedAtObject != null && _gazedAtObject.activeInHierarchy)
+    {
+        _gazedAtObject.SendMessage("OnPointerEnterXR");
+        _isPointerOverInteractable = true;
+        GazeManager.Instance.StartGazeSelection();
+    }
+    else
+    {
+        GazeManager.Instance.CancelGazeSelection();
+    }
+}
+
 
     private void PointerOnGaze(Vector3 hitPoint)
-    {
-        float scaleFactor = scaleSize * Vector3.Distance(transform.position, hitPoint);
-        pointer.transform.localScale = Vector3.one * scaleFactor;
-        pointer.transform.parent.position = CalculatePointerPosition(transform.position, hitPoint, disPointerObject);
-    }
+{
+    float distance = Vector3.Distance(transform.position, hitPoint);
+    float scaleFactor = Mathf.Min(scaleSize * distance, 1.0f);
+    pointer.transform.localScale = Vector3.one * scaleFactor;
+    pointer.transform.position = CalculatePointerPosition(transform.position, hitPoint, disPointerObject);
+}
+
+
 
     private void PointerOutGaze()
     {
@@ -125,11 +129,8 @@ public class CameraPointerManager : MonoBehaviour
     }
 
     private Vector3 CalculatePointerPosition(Vector3 p0, Vector3 p1, float t)
-    {
-        float x = p0.x + t * (p1.x - p0.x);
-        float y = p0.y + t * (p1.y - p0.y);
-        float z = p0.z + t * (p1.z - p0.z);
+{
+    return Vector3.Lerp(p0, p1, t);  // Usa Lerp para una interpolación más segura y limpia
+}
 
-        return new Vector3(x, y, z);
-    }
 }
