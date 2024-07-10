@@ -8,6 +8,7 @@ public class GameStateManager : MonoBehaviour
     public bool MissionCompleted { get; set; }
     public bool FirstMissionCompleted { get; set; }
     public bool SecondMissionCompleted { get; set; }
+    public bool ThirdMissionCompleted { get; set; }
 
     void Awake()
     {

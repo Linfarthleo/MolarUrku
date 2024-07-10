@@ -5,7 +5,7 @@ public class MissionController : MonoBehaviour
 {
     public int totalCorrectRequired = 3;
     private int currentCorrectCount = 0;
-    public int missionIndex;  // 0 for first mission, 1 for second mission
+    public int missionIndex;  // 0 for first mission, 1 for second mission, 2 for third mission
 
     public void RegisterCorrectSelection()
     {
@@ -17,22 +17,24 @@ public class MissionController : MonoBehaviour
 
     void MissionCompleted()
     {
-        if (missionIndex == 0)
+        switch (missionIndex)
         {
-            GameStateManager.Instance.FirstMissionCompleted = true;  // Mark the first mission as completed
+            case 0:
+                GameStateManager.Instance.FirstMissionCompleted = true;
+                break;
+            case 1:
+                GameStateManager.Instance.SecondMissionCompleted = true;
+                break;
+            case 2:
+                GameStateManager.Instance.ThirdMissionCompleted = true;  // Mark the third mission as completed
+                break;
         }
-        else if (missionIndex == 1)
-        {
-            GameStateManager.Instance.SecondMissionCompleted = true;  // Mark the second mission as completed
-        }
-
-        GameStateManager.Instance.MissionCompleted = true;  // General flag if needed
+        GameStateManager.Instance.MissionCompleted = true;
         Invoke("CompleteMission", 2.0f);
     }
 
     void CompleteMission()
     {
-        // Load the rollercoaster scene again to continue the journey
-        SceneManager.LoadScene("WorldOneScene");
+        SceneManager.LoadScene("WorldOneScene");  // Assumes this is the main scene for the rollercoaster
     }
 }
