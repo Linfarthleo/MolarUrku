@@ -5,7 +5,7 @@ using Cinemachine;
 public class ContinueRollerCoaster : MonoBehaviour
 {
     public CinemachineDollyCart dollyCart;
-    public float[] resumePositions = new float[] { 36f, 69f };
+    public float[] resumePositions = new float[] { 36f, 69f, 157f }; // Agregado la posición para la tercera misión
 
     void OnEnable()
     {
@@ -28,7 +28,11 @@ public class ContinueRollerCoaster : MonoBehaviour
     private int DetermineResumePosition()
     {
         // Check from the last mission to the first to capture the latest completed position
-        if (GameStateManager.Instance.SecondMissionCompleted)
+        if (GameStateManager.Instance.ThirdMissionCompleted) // Asumiendo que existe un flag para la tercera misión
+        {
+            return 2; // Index for the third mission's resume position
+        }
+        else if (GameStateManager.Instance.SecondMissionCompleted)
         {
             return 1; // Index of the second mission's resume position
         }
